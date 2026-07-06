@@ -7,7 +7,7 @@ workspace. Keep it secret — it is shown once.
 
 ## Endpoint
 ```
-https://context-mcp.srv1461270.hstgr.cloud/mcp
+https://context-mcp.example.com/mcp
 ```
 
 ## Claude Desktop / Cursor (native Streamable HTTP)
@@ -15,7 +15,7 @@ https://context-mcp.srv1461270.hstgr.cloud/mcp
 {
   "mcpServers": {
     "context-api": {
-      "url": "https://context-mcp.srv1461270.hstgr.cloud/mcp",
+      "url": "https://context-mcp.example.com/mcp",
       "headers": { "Authorization": "Bearer eos_YOUR_KEY" }
     }
   }
@@ -28,7 +28,7 @@ https://context-mcp.srv1461270.hstgr.cloud/mcp
   "mcpServers": {
     "context-api": {
       "command": "npx",
-      "args": ["-y", "mcp-remote", "https://context-mcp.srv1461270.hstgr.cloud/mcp",
+      "args": ["-y", "mcp-remote", "https://context-mcp.example.com/mcp",
                "--header", "Authorization: Bearer eos_YOUR_KEY"]
     }
   }
@@ -37,7 +37,7 @@ https://context-mcp.srv1461270.hstgr.cloud/mcp
 
 ## Smoke test with curl
 ```bash
-curl -s https://context-mcp.srv1461270.hstgr.cloud/mcp \
+curl -s https://context-mcp.example.com/mcp \
   -H "Content-Type: application/json" \
   -H "Accept: application/json, text/event-stream" \
   -H "Authorization: Bearer eos_YOUR_KEY" \
