@@ -20,8 +20,8 @@ const marker = "demo-learning-" + Date.now();
 const learning = {
   product: PRODUCT,
   category: "headlines",
-  title: "Numbered headlines outperform",
-  body: "Headlines with a number in the first 3 words lifted CTR ~18%. (" + marker + ")",
+  title: "Demo agent memory check",
+  body: "Example learning written by the demo agent to show durable memory. (" + marker + ")",
   confidence: "medium",
 };
 
