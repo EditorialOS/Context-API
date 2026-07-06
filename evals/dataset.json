@@ -1,0 +1,49 @@
+[
+  {
+    "id": "workspace-identity",
+    "tool": "getCurrentWorkspace",
+    "args": {},
+    "expect": "workspace id present",
+    "check": "id"
+  },
+  {
+    "id": "learning-roundtrip",
+    "tool": "createLearning",
+    "args": {
+      "body": {
+        "note": "EVAL_MARKER note",
+        "category": "eval"
+      }
+    },
+    "expect": "HTTP 2xx",
+    "check": "HTTP 20"
+  },
+  {
+    "id": "learning-recall",
+    "tool": "listLearnings",
+    "args": {},
+    "expect": "EVAL_MARKER visible",
+    "check": "EVAL_MARKER"
+  },
+  {
+    "id": "brand-context-read",
+    "tool": "getBrandContext",
+    "args": {},
+    "expect": "responds (200 or empty)",
+    "check": "HTTP 2"
+  },
+  {
+    "id": "destinations-list",
+    "tool": "listDestinations",
+    "args": {},
+    "expect": "responds",
+    "check": "HTTP 2"
+  },
+  {
+    "id": "audit-visible",
+    "tool": "listAuditLog",
+    "args": {},
+    "expect": "audit entries after writes",
+    "check": "HTTP 2"
+  }
+]
