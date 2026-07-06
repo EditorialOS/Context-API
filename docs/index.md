@@ -17,5 +17,5 @@ This repo wraps it as **39 MCP tools** over **HTTPS**, with each
 customer's `eos_` key scoping every call to their own workspace.
 
 ## Live
-- MCP: `https://context-mcp.srv1461270.hstgr.cloud/mcp`
-- API: `https://context-api.srv1461270.hstgr.cloud/api`
+- MCP: `https://context-mcp.example.com/mcp`
+- API: `https://context-api.example.com/api`
