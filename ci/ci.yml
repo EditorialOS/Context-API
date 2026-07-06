@@ -1,0 +1,28 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install (deploy)
+        working-directory: deploy
+        run: npm install
+      - name: Syntax check server
+        working-directory: deploy
+        run: node --check server.js
+      - name: Install (evals)
+        working-directory: evals
+        run: npm install || true
+      - name: Lint eval harness
+        working-directory: evals
+        run: node --check run-evals.mjs
