@@ -1,0 +1,24 @@
+services:
+  mcp:
+    build: .
+    image: context-api-mcp:latest
+    container_name: context-api-mcp
+    restart: unless-stopped
+    environment:
+      - CONTEXT_API_BASE_URL=http://api:8080/api
+      - ALLOW_FALLBACK_TOKEN=0
+      - PORT=3000
+    ports:
+      - "8083:3000"
+    networks:
+      - context-api_default
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=context-api_default
+      - traefik.http.routers.context-mcp.entrypoints=websecure
+      - "traefik.http.routers.context-mcp.rule=Host(`context-mcp.srv1461270.hstgr.cloud`)"
+      - traefik.http.routers.context-mcp.tls.certresolver=letsencrypt
+      - traefik.http.services.context-mcp.loadbalancer.server.port=3000
+networks:
+  context-api_default:
+    external: true
