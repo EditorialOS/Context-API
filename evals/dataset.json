@@ -4,46 +4,56 @@
     "tool": "getCurrentWorkspace",
     "args": {},
     "expect": "workspace id present",
-    "check": "id"
+    "check": "\"id\""
   },
   {
-    "id": "learning-roundtrip",
+    "id": "learning-roundtrip-write",
     "tool": "createLearning",
     "args": {
       "body": {
-        "note": "EVAL_MARKER note",
-        "category": "eval"
+        "product": "eval-suite",
+        "category": "eval",
+        "title": "EVAL_MARKER title",
+        "body": "EVAL_MARKER body"
       }
     },
-    "expect": "HTTP 2xx",
-    "check": "HTTP 20"
+    "expect": "HTTP 201 created",
+    "check": "HTTP 201"
   },
   {
     "id": "learning-recall",
     "tool": "listLearnings",
-    "args": {},
+    "args": {
+      "query": {
+        "product": "eval-suite"
+      }
+    },
     "expect": "EVAL_MARKER visible",
     "check": "EVAL_MARKER"
   },
   {
     "id": "brand-context-read",
     "tool": "getBrandContext",
-    "args": {},
-    "expect": "responds (200 or empty)",
+    "args": {
+      "query": {
+        "product": "eval-suite"
+      }
+    },
+    "expect": "responds 2xx",
     "check": "HTTP 2"
   },
   {
     "id": "destinations-list",
     "tool": "listDestinations",
     "args": {},
-    "expect": "responds",
+    "expect": "responds 2xx",
     "check": "HTTP 2"
   },
   {
     "id": "audit-visible",
     "tool": "listAuditLog",
     "args": {},
-    "expect": "audit entries after writes",
+    "expect": "audit responds 2xx",
     "check": "HTTP 2"
   }
 ]
