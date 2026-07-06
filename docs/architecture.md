@@ -9,11 +9,11 @@ it to AI clients as a multi-tenant MCP server over HTTPS.
 
 ```
 AI client (Claude / Cursor / agent)
-   │  POST https://context-mcp.srv1461270.hstgr.cloud/mcp
+   │  POST https://context-mcp.example.com/mcp
    │  Authorization: Bearer eos_<customer key>
    ▼
 Traefik (host-networked, :443, Let's Encrypt TLS)
-   │  Host(context-mcp.srv1461270.hstgr.cloud) → container :3000
+   │  Host(context-mcp.example.com) → container :3000
    ▼
 context-api-mcp  (Node · express · @modelcontextprotocol/sdk)
    │  reads the client bearer per request, forwards it unchanged
