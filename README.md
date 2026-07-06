@@ -32,12 +32,12 @@ Agents are stateless. The Context API gives them durable memory that is:
 - **Zero-drift.** The MCP server generates one tool per API operation directly
   from the live OpenAPI spec, so the tool surface never falls out of sync.
 
-## Live endpoint
+## Deployment
 
 | | |
 |---|---|
-| MCP (HTTPS) | `https://context-mcp.srv1461270.hstgr.cloud/mcp` |
-| API (HTTPS) | `https://context-api.srv1461270.hstgr.cloud/api` |
+| MCP (HTTPS) | `https://context-mcp.example.com/mcp` |
+| API (HTTPS) | `https://context-api.example.com/api` |
 | Transport | MCP Streamable HTTP (POST `/mcp`) |
 | Auth | `Authorization: Bearer eos_<workspace key>` |
 | Tools | **39**, auto-generated from OpenAPI |
@@ -62,7 +62,7 @@ Agents are stateless. The Context API gives them durable memory that is:
 {
   "mcpServers": {
     "context-api": {
-      "url": "https://context-mcp.srv1461270.hstgr.cloud/mcp",
+      "url": "https://context-mcp.example.com/mcp",
       "headers": { "Authorization": "Bearer eos_YOUR_KEY" }
     }
   }
@@ -74,7 +74,7 @@ Full walkthrough → [docs/connect-guide.md](docs/connect-guide.md).
 ## Onboarding a customer
 
 ```bash
-ssh root@<vps> /opt/context-api-mcp/provision-customer.sh "Customer Name"
+ssh <admin-user>@<your-server> /opt/context-api-mcp/provision-customer.sh "Customer Name"
 ```
 
 Mints an isolated workspace + `eos_` key and prints the client config. Only the
@@ -87,7 +87,6 @@ deploy/     MCP server, Dockerfile, compose, onboarding script, env template
 docs/       architecture, connect guide, PRD, docs index
 evals/      scored regression harness (store → recall → isolation)
 agent/      demo agent: remember a learning, then recall it
-ci/         CI workflow (copy into .github/workflows to enable)
 ```
 
 ## Documentation
